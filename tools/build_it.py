@@ -152,11 +152,16 @@ def patch_monster_ptr(data):
 # reale. mai giocate/verificate a schermo: il gioco le stampa solo a fine round di combattimento.
 BATTLE_MESSAGES = [
     # (unita, offset dall'inizio unita (unit*UNIT), testo italiano, budget byte incl. 0x00, byte JP attesi per la verifica)
-    (59, 0x58A, "$2 +ESP da $0<05>", 17, bytes.fromhex("24328a202430897972799d816674800500")),
-    (59, 0x5F9, "$2 +oro da $0<05>", 16, bytes.fromhex("24328a20243047897576886674800500")),
+    # JP: "$2は $0のけいけんちをえた" / "$2は $0Gのおかねをえた" / "$2は レベルがあがった" / "$0は $2の魔法をおぼえた"
+    (59, 0x58A, "$2 vince $0 ESP<05>", 17, bytes.fromhex("24328a202430897972799d816674800500")),
+    (59, 0x5F9, "$2 vince $0<47><05>", 16, bytes.fromhex("24328a20243047897576886674800500")),
     (59, 0x65D, "$2 sale liv!<05>", 14, bytes.fromhex("24328a20dafdd90671066f800500")),
-    (59, 0x88D, "$0 impara $2<05>", 18, bytes.fromhex("24308a202432890108010a66751e74800500")),
+    (59, 0x88D, "$0 apprende $2<05>", 18, bytes.fromhex("24308a202432890108010a66751e74800500")),
 ]
+# Codici che la routine di stampa (unit58:$9E13, tabella a $9E3A) tratta come COMANDI e non come caratteri:
+# "+" (0x2B) per esempio salta a un'altra routine e fa stampare un dialogo a caso. 0x24 ("$N" = variabile) e' voluto.
+BATTLE_CMD_BYTES = {0x5E, 0x25, 0x23, 0x2E, 0x2B, 0x2D, 0x26, 0x40, 0x2A, 0x2F, 0x3E, 0x41, 0x42, 0x43, 0x44,
+                    0x1F, 0x46, 0x3B, 0x49}
 
 
 def patch_battle_messages(data):
@@ -171,6 +176,10 @@ def patch_battle_messages(data):
             (unit, off, jp_expected.hex(" "), got.hex(" ")))
         enc = charmap_it.encode_text(text) + b"\x00"
         assert len(enc) <= budget, "messaggio troppo lungo: %r (%d byte, budget %d)" % (text, len(enc), budget)
+        for i, b in enumerate(enc):
+            if i and enc[i - 1] == 0x24:
+                continue                                    # la cifra dopo "$"
+            assert b not in BATTLE_CMD_BYTES, "%r: il byte 0x%02X e' un comando della routine di stampa" % (text, b)
         data[base:base + len(enc)] = enc
         data[base + len(enc):base + budget] = bytes(budget - len(enc))
         n += 1
