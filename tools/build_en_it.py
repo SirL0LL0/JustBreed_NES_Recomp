@@ -298,6 +298,63 @@ def layout(msgs, chains):
     return pos, used, total
 
 
+# --------------------------------------------------------------------------------- testi fuori dialogo
+UI_TABLES = {"item": (0x4C000, 8, 154), "place": (0x4D2B4, 10, 29), "rank": (0x747C4, 8, 4)}
+
+
+def patch_ui(data, path):
+    """text/it_en_ui.tsv: tabelle a record fissi e stringhe a lunghezza esatta (vedi l'intestazione del file)."""
+    n = 0
+    for ln, l in enumerate(open(path, encoding="utf-8-sig"), 1):
+        l = l.rstrip("\n")
+        if not l or l.startswith("#"):
+            continue
+        p = l.split("\t")
+        if p[0] in UI_TABLES:
+            base, width, count = UI_TABLES[p[0]]
+            idx = int(p[1])
+            assert 0 <= idx < count, "riga %d: indice fuori tabella" % ln
+            raw = C.encode_plain(p[2])
+            assert len(raw) <= width - 1, "riga %d: %r troppo lungo (max %d)" % (ln, p[2], width - 1)
+            o = 16 + base + idx * width
+            data[o:o + width] = raw + b" " * (width - 1 - len(raw)) + b"\x00"
+        elif p[0] == "fixed":
+            off, en, it = int(p[1], 16), C.encode_plain(p[2]), C.encode_plain(p[3])
+            o = 16 + off
+            assert bytes(data[o:o + len(en)]) == en, "riga %d: in ROM a %05X non c'e' %r" % (ln, off, p[2])
+            assert len(it) <= len(en), "riga %d: %r piu' lungo dell'inglese (%d > %d)" % (ln, p[3], len(it), len(en))
+            pad = b" " * (len(en) - len(it))
+            it = it[:-1] + pad + it[-1:] if it.endswith(b"\x05") else it + pad   # spazi prima dell'a capo finale
+            data[o:o + len(en)] = it
+        else:
+            raise ValueError("riga %d: tipo sconosciuto %r" % (ln, p[0]))
+        n += 1
+    return n
+
+
+# Introduzione: unita' 37 $8DA6 (u37:$8B2B carica $BE/$BF = $8DA6, stampa con $8AC5): righe chiuse da 00, fine = 00 00.
+# La routine espande i digrammi B0-FE con la sua tabella (37:$8CB8, quella inglese). NON superare la fine del testo
+# inglese (+0xEC1): i byte subito dopo sono un'altra stringa letta dal gioco (scriverci sopra stampa un "." in alto).
+# Colonne utili: 31 (la stampa parte dalla colonna 1).
+INTRO_OFF, INTRO_END, INTRO_COLS = 37 * UNIT + 0xDA6, 37 * UNIT + 0xEC1, 31
+
+
+def patch_intro(data, path):
+    lines = open(path, encoding="utf-8-sig").read().split("\n")
+    if lines and lines[-1] == "":
+        lines.pop()
+    lines = [l if l else " " for l in lines]          # riga vuota = uno spazio (00 00 chiuderebbe il testo)
+    for l in lines:
+        assert len(l) <= INTRO_COLS, "introduzione: riga troppo lunga (%d): %r" % (len(l), l)
+    pairs = [(C.SINGLE[p[0]], C.SINGLE[p[1]]) for p in C.EN_DTE]
+    raw = b"".join(apply_dte(C.encode_plain(l), pairs) + b"\x00" for l in lines) + b"\x00"
+    assert INTRO_OFF + len(raw) <= INTRO_END, "introduzione troppo lunga: %d byte (max %d)" % (
+        len(raw), INTRO_END - INTRO_OFF)
+    assert data[16 + 37 * UNIT + 0xB2B:16 + 37 * UNIT + 0xB33] == bytes([0xA9, 0xA6, 0x85, 0xBE, 0xA9, 0x8D, 0x85, 0xBF])
+    data[16 + INTRO_OFF:16 + INTRO_OFF + len(raw)] = raw
+    print("introduzione: %d righe" % len(lines))
+
+
 # ------------------------------------------------------------------------------------------ controlli
 def check_width(idx, text):
     bad = []
@@ -380,6 +437,14 @@ def main():
         data[16 + C.PTR_OFF + k] = (off >> 1) & 0xFF
         data[16 + C.PTR_OFF + k + 1] = (off >> 9) & 0x0F
         data[16 + C.BANKTAB_OFF + k] = (unit - 0x10) & 0xFF
+
+    # --- testi fuori dai dialoghi
+    ui = os.path.join(os.path.dirname(os.path.abspath(it_tsv)), "it_en_ui.tsv")
+    if os.path.exists(ui):
+        print("testi fuori dai dialoghi:", patch_ui(data, ui))
+    intro = os.path.join(os.path.dirname(os.path.abspath(it_tsv)), "intro_it_en.txt")
+    if os.path.exists(intro):
+        patch_intro(data, intro)
 
     # --- grafica
     draw_accents(data, prg_size)

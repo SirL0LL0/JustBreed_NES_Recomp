@@ -1,0 +1,178 @@
+# Testi fuori dai dialoghi (build_en_it.py). Righe:
+#   item<TAB>n<TAB>testo        tabella oggetti (PRG 0x4C000, record 8 byte: max 7 caratteri, icone <xx> comprese)
+#   place<TAB>n<TAB>testo       luoghi (0x4D2B4, record 10 byte: max 9)
+#   rank<TAB>n<TAB>testo        gradi (0x747C4, record 8 byte: max 7)
+#   fixed<TAB>offset<TAB>inglese<TAB>italiano   stringa a lunghezza ESATTA (completata con spazi): stringhe dei menu
+#       e testo incorporato nel codice (dopo lo 00 l'esecuzione riprende subito: la lunghezza non deve cambiare).
+#       L'inglese serve da controllo (deve corrispondere ai byte della ROM).
+item	1	Fulmine
+item	2	Bufera
+item	3	Erba1
+item	4	Erba2
+item	7	<15>ESP
+item	8	NebVita
+item	9	NebMagi
+item	10	ErbaVit
+item	11	ErbaCur
+item	12	Birra
+item	14	Panico
+item	16	Raggio
+item	17	Miracol
+item	18	Fungo
+item	19	Flauto
+item	20	<24>Oasi
+item	22	MarWing
+item	23	Nafta
+item	24	Lettera
+item	25	Lett1
+item	26	Lett2
+item	27	Lett3
+item	28	Esplos.
+item	29	Occhio
+item	30	Collana
+item	31	Travest
+item	32	Ascia
+item	33	Tronco
+item	34	Torcia
+item	35	Tessera
+item	36	MarCapo
+item	37	Ignoto4
+item	38	Ignoto5
+item	39	Niente
+item	41	Zaffiro
+item	42	Rubino
+item	43	Smerald
+item	44	Lapis
+item	45	Cristal
+item	46	Turches
+item	47	Ametist
+item	50	<16>Magia
+item	51	<17>Veloc
+item	52	<16>Fascin
+item	55	Niente
+item	56	<10>Ottusa
+item	57	<18>Ottusa
+item	58	<10>Rame
+item	59	<18>Rame
+item	60	<10>Ferro
+item	61	<18>Ferro
+item	62	<10>Accia.
+item	63	<18>Accia.
+item	64	<10>Argent
+item	65	<18>Argent
+item	67	<10>Ciclon
+item	68	<10>Luce
+item	69	<10>Grande
+item	70	<10>Cura
+item	72	<10>Fiamma
+item	73	<10>Sottil
+item	74	<19>Giove
+item	75	<18>Marte
+item	77	Pala
+item	78	<10>Capric
+item	81	<13>Legno
+item	82	<13>Vincol
+item	83	<13>Rame
+item	84	<13>Ferro
+item	85	<13>Accia.
+item	86	<13>Argent
+item	87	Balestr
+item	88	<1A>Legno
+item	89	<1A>Ferro
+item	90	<1A>Argent
+item	92	<13>Letale
+item	93	<13>Elegan
+item	94	SBalest
+item	95	<13>Furia
+item	98	<1C>Legno
+item	99	<1C>Pietra
+item	100	<1C>Vetro
+item	101	<1C>Ferro
+item	103	<1C>Argent
+item	104	<1C>Cura
+item	106	ZanCobr
+item	108	Piccone
+item	109	Niente
+item	110	Abiti
+item	111	<11>Cuoio
+item	112	<11>Rame
+item	113	<11>Squame
+item	114	<11>Maglia
+item	115	<11>Ferro
+item	116	<11>Accia.
+item	117	<11>Argent
+item	118	<11>Angelo
+item	119	<11>Antica
+item	120	Divisa
+item	121	<11>Rustic
+item	122	<11>Incant
+item	123	<11>Emozio
+item	126	<11>Cura
+item	127	<11>Solare
+item	128	<11>Specch
+item	130	<0E>Cotone
+item	131	<0E>Seta
+item	132	<0E>Protez
+item	133	<0E>Runa
+item	134	<0E>Angelo
+item	135	<0E>Sacra
+item	136	<0E>Fortun
+item	138	<0E>Magica
+item	140	Niente
+item	141	<12>Cuoio
+item	142	<12>Rotell
+item	143	<12>Piombo
+item	144	<12>Rame
+item	145	<12>Ferro
+item	146	<12>Accia.
+item	147	<12>Argent
+item	148	<12>Torre
+item	150	<12>Venere
+item	151	<12>Fascin
+item	152	<12>Dardo
+place	1	<1B>Mago
+place	4	Boscaiolo
+rank	0	Eroe
+rank	1	Mago
+rank	2	Soldato
+rank	3	Arciere
+# messaggi di fine battaglia (unita' 59, testo dopo JSR $9E01)
+fixed	7658A	Received $0 Exp<05>	Ottenuti $0 ESP<05>
+fixed	765F9	Received $0 G.<05>	Ottenuti $0 G.<05>
+fixed	7665D	Level up!!  <05>	Liv. salito!<05>
+fixed	7688D	$0 learned $2!!!<05>	$0 apprende $2!!<05>
+# menu e schermate (unita' 58)
+fixed	7419A	Yes<05> No	Sì <05> No
+fixed	742C0	Spells	Magie
+fixed	742F0	Spells	Magie
+fixed	74360	Spells	Magie
+fixed	748FA	Spells	Magie
+fixed	74517	Name 	Nome
+fixed	74697	Lvl	Liv
+fixed	746B6	Exp	Esp
+fixed	74731	Power	Forza
+fixed	74747	Attack	Offesa
+fixed	7475D	Stamina	Vigore
+fixed	74773	Defense	Difesa
+fixed	74787	Wisdom	Senno
+fixed	7481B	Equip 	Equip
+fixed	74937	 Weapon 	  Arma
+fixed	7498B	  Armor  	  Veste
+fixed	749E1	 Shield	 Scudo
+fixed	74A33	Accessory	Accessori
+fixed	74BA8	 Army 	Truppa
+fixed	74BBC	 Army 	Truppa
+fixed	74BD4	 Army 	Truppa
+fixed	74BF0	 Army 	Truppa
+fixed	74CF7	Copy Game  	Copia gioco
+fixed	74D12	Erase Game	Cancella
+fixed	74D40	Game 	Dati
+fixed	74D7F	Lvl	Liv
+fixed	74D8B	Start	Avvia
+fixed	74E5E	Are you sure? 	Sei sicuro?
+fixed	7513B	Name 	Nome
+fixed	751BC	  Menu<05> Status<05> Done<05> Suspend	  Menu<05> Stato<05> Fine<05> Sospendi
+fixed	75225	Suspend the Game	Sospendi gioco
+fixed	75246	Status<05> Auto<05> Done 	Stato <05> Auto<05> Fine
+fixed	74F03	End	Fin
+fixed	74F8A	End	Fin
