@@ -336,6 +336,14 @@ def main():
     def enc(ps):
         return b"".join(apply_dte(b, pairs) if f is True else b for f, b in ps)
     msgs = [enc(parts[k]) + b"\x00\x00" for k in sorted(parts)]
+    # messaggi ancora in inglese che col dizionario italiano superano 256 byte: provvisoriamente solo i comandi
+    for n, k in enumerate(sorted(parts)):
+        if len(msgs[n]) > 256 and k not in it:
+            only_cmds = "".join(re.findall(r"<(?!05>)[0-9A-F]{2}>[0-9!. ]*|\{[0-9A-F]{2}:[0-9A-F]{2}\}|<05>", texts[k]))
+            plains[k] = C.encode_plain("...<05>" + only_cmds)
+            parts[k] = apply_dict(segments(plains[k]), words)
+            msgs[n] = enc(parts[k]) + b"\x00\x00"
+            print("AVVISO: %04X (inglese) troppo lungo, provvisoriamente solo i comandi" % k)
     too_long = [(k, len(m)) for k, m in zip(sorted(parts), msgs) if len(m) > 256]
     assert not too_long, "messaggi oltre 256 byte: %s" % ", ".join("%04X (%d)" % x for x in too_long)
     wenc = [apply_dte(w, pairs) for w in words]
