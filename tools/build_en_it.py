@@ -27,8 +27,12 @@ def load_texts(en_tsv, it_tsv):
         p = l.rstrip("\n").split("\t")
         en[int(p[0], 16)] = p[2]
     it = {}
-    if it_tsv and os.path.exists(it_tsv):
-        for l in open(it_tsv, encoding="utf-8-sig"):
+    files = [it_tsv] if it_tsv and os.path.exists(it_tsv) else []
+    more = os.path.splitext(it_tsv)[0] if it_tsv else None          # text/it_en/*.tsv: un file per blocco
+    if more and os.path.isdir(more):
+        files += [os.path.join(more, f) for f in sorted(os.listdir(more)) if f.endswith(".tsv")]
+    for path in files:
+        for l in open(path, encoding="utf-8-sig"):
             l = l.rstrip("\n")
             if not l or l.startswith("#") or "\t" not in l:
                 continue

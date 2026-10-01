@@ -34,6 +34,8 @@ for _i in range(26):
 for _c in " !\"',0123456789:?":
     SINGLE[_c] = ord(_c)
 SINGLE["."] = 0x1E
+SINGLE["-"] = 0x28            # trattino ("top-class")
+SINGLE["*"] = 0x29            # asterisco ("*sob*")
 # lettere accentate (italiano): codici 06-0C, glifi kana inutilizzati dalla versione inglese (disegnati da build_en_it)
 ACCENTED = "àèéìòùÈ"
 for _i, _c in enumerate(ACCENTED):

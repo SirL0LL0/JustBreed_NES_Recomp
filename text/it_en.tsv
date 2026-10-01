@@ -1,6 +1,234 @@
 # Traduzione italiana basata sul copione inglese (text/en.tsv). id<TAB>testo; i messaggi assenti restano in inglese.
 # Formato: <05> a capo, <5E> attesa tasto, <xx> comandi (copiarli com'erano), $N variabili. Max 22 colonne per riga.
-0000	Nessuno risponde<1E><1E><1E>
-0002	<1E><1E><1E><1E><1E><1E>Non succede niente<1E>
-0004	Non c'è niente di<05>speciale<1E>
-
+# Nomi propri (persone, luoghi, magie) come nella versione inglese.
+0000	Nessuno risponde...
+0002	...Non succede nulla.
+0004	Non noti niente di<05>particolare.
+0006	<49>255<05><49>198<05><05>$2 non si può<05>usare qui.
+0008	<49>255<05><49>198<05><05>MP insufficienti.
+000A	<49>255<05><49>198<05><05>$0 non può<05>equipaggiare $2.
+000C	<49>255<05><49>198<05><05>$2 è colto da<05>paralisi.
+000E	<23>!91<05>Come ho potuto...<05>$1! Perdonami.<05><5E>  <05>$2 lascia<05>la battaglia.<05>
+0010	<23>!92<05>Che peccato...<05>Signor $1, a te<05>il resto.<05><5E>  <05>$2 lascia<05>la battaglia.<05>
+0012	<23>!93<05>Ahi, capo, che male!<05>Mi hanno conciato!<05><5E>  <05>$2 lascia<05>la battaglia.<05>
+0014	<23>!94<05>Argh! Io, $2,<05>sconfitto da simili<05>mostri...<05><5E>  <05>$2 lascia<05>la battaglia.<05>
+0016	<23>!95<05>$1... scusa se<05>ti ho aiutato poco...<05><5E>  <05>$2 lascia<05>la battaglia.<05>
+0018	$2 lascia<05>la battaglia.
+001A	L'esercito di $2<05>lascia la battaglia.
+001C	Trovi $2!<05><23>!93<05><2A><2E>248<05><2B>1<05>
+0020	Lo zaino è pieno.<05>Vuoi buttare<05>qualcosa?<05><2B>1<05>
+0026	Hai gettato<05>$2.
+002A	<23>91<05>Questo non si può<05>buttare. Vuoi buttare<05>altro?<05><2D>4<05>
+002C	<2A><2E>189<05>Hai gettato $2.<05><2E>92<05>
+002E	Il pavimento si apre<05>sotto i tuoi piedi.<05>È una botola!!
+0030	 <05>Il gruppo di $1<05>ha vinto!
+0032	"$0" non ha<05>effetto su $2.
+0034	Gioco sospeso. Tieni<05>premuto RESET mentre<05>spegni la console.<05><49>224<05>
+0036	Ripresa del gioco<05>sospeso.<05><5E> Attenzione: premendo<05>RESET ora tornerai<05>all'ultimo<05>salvataggio.
+0038	Il forziere è vuoto.
+003A	Ti consideri più<05>impaziente degli<05>altri?<05><5E> O forse sei più<05>rilassato e<05>spensierato?<05><25>4<05> IMPAZIENTE<05> NORMALE<05> RILASSATO<05> NESSUNO
+003C	<2E>48<05><2E>!49<05>Allora forse una<05>Velocità messaggi<05>alta fa per te?<05><5E> Non temere, ci ho<05>già pensato io!<05><5E>  <05>Velocità messaggi:<05>"Veloce".<05>
+003E	<2E>!48<05><2E>!49<05>Quindi il normale è<05>il meglio, alla fine.<05>Oplà!<05><5E>  <05>Velocità messaggi:<05>"Normale".<05>
+0040	<2E>!48<05><2E>49<05>Allora una Velocità<05>messaggi tranquilla<05>è proprio quel che<05>ci vuole, no?<05><5E> Inutile correre,<05>dopotutto.<05><5E>  <05>Velocità messaggi:<05>"Lenta".<05>
+0042	Come vuoi.
+0044	<49>255<05><49>198<05>L'esplosivo va messo<05>più a destra.
+0046	<49>255<05><49>198<05>L'esplosivo va messo<05>più a sinistra.
+0048	L'esplosivo......<05><5E> <49>255<05><49>198<05>Ohh, peccato!
+004A	Non ci sono nemici<05>su cui usare magie.
+004C	Rolan non sa ancora<05>usare la magia.
+004E	Lo zaino è pieno.<05>Impossibile togliere.
+0050	<49>255<05><49>198<05>Usare $2 qui<05>non avrebbe effetto.
+0052	$1 indossa<05>la Tiara di Zaffiro<05>di Firis.
+0054	$1 decide di<05>partire da solo per<05>salvare Firis...
+0056	Se stai partendo,<05>$1, faresti bene<05>a fare scorta di<05>erbe.
+0058	La Sacerdotessa...<05>...rapita!<05>Che ne sarà di<05>Astholm?
+005A	<26>6<05>Quei farabutti che<05>hanno preso Firis<05>devono avere magie<05>potentissime.<05><5E> $1, pensi<05>davvero di farcela?
+005C	Grande! Hai un mago<05>dalla tua parte ora?<05>Ce la farai di<05>sicuro, $1!
+005E	La Sacerdotessa era<05>come il sole per noi.<05><5E> Ti prego, salvala<05>presto e riporta la<05>luce in città!
+0060	Salva Firis, ti<05>prego!<05><25>1
+0062	Così si fa! Questo<05>è il nostro $1!
+0064	Codardo! Ti odio,<05>$1! Testone!
+0066	<26>6<05>Quel furfante che ha<05>rapito la nostra<05>Firis... Gel du Rey,<05>ha detto?<05><5E> Maledetto! La<05>pagherà cara!!
+0068	Dicono che i furfanti<05>che hanno rapito<05>Firis siano volati<05>verso sud.
+006A	Oh cielo, la Festa<05>doveva essere così<05>divertente.<05><5E> Pensare che potesse<05>succedere una cosa<05>simile...
+006C	Di qua! I mostri<05>hanno portato via la<05>Sacerdotessa di qua!<05>Presto, $1, fa'<05>qualcosa!
+0070	<2A><2E>137<05><23>!90<05>Oh oh, hai la<05>Tessera Soci!<05><5E> Sei davvero un<05>guerriero di prima<05>classe!
+0072	<26>8<05><23>42<05><2E>42<05>Ah, hai trovato un<05>alleato forte, $1!<05><5E> Ma un simile<05>equipaggiamento non<05>ti servirà a molto<05>sulla strada che<05>ti aspetta.<05><5E> Prendi questa.<05><5E>  <05><49>255<05><49>218<05>Ottieni l'Armatura<05>Antica!<05> <05><5E> $1! Riportaci<05>Firis sana e salva!...<05><2A>112<05>
+0074	Riportaci Firis sana<05>e salva!
+0076	<26>!1<05>Va' dal mago che<05>vive a ovest della<05>città.<05><5E> Ti aiuterà di<05>sicuro.
+0078	Oh, $1! Sei qui!<05>Ascolta bene ciò che<05>ho da dirti.<05><5E> La stirpe delle<05>Sacerdotesse passa<05>da madre in figlia,<05><5E> e così via, sin dai<05>tempi delle leggende<05>più remote...<05><5E> E ora un branco di<05>mostri ha preso la<05>nostra Firis,<05><5E> come se aspettassero<05>solo la fine della<05>cerimonia di<05>successione...<05><2B>1<05>
+007A	<5E> Non posso credere<05>che sia una semplice<05>coincidenza.<05><5E> Non illuderti, i<05>mostri ostacoleranno<05>il tuo cammino...<05><5E> Detto ciò, intendi<05>ancora partire per<05>salvare Firis?<05><25>1
+007C	Bene! Hai proprio<05>una bella<05>determinazione.<05><5E> Tuttavia, non sei in<05>grado di affrontare<05>quei demoni da solo...<05>Dunque!<05><5E> A ovest di Astholm<05>vive un mago<05>solitario.<05><5E> È un mio vecchio<05>conoscente, e in<05>passato abbiamo<05>viaggiato insieme.<05><5E> Dovresti fargli<05>visita.<05>Ti aiuterà di sicuro.<05><40>01<05>
+007E	Immagino sia una tua<05>scelta. Nessuno può<05>fartene una colpa,<05>$1...
+0080	Fuori città è pieno<05>di mostri. Stai<05>attento!
+0082	$1, sei mai stato<05>nel prossimo paese,<05>Sholoss?<05><25>1
+0086	A Sholoss vendono<05>armi e armature.<05><5E> È una buona idea<05>sistemare il tuo<05>equipaggiamento.
+0088	Bugiardo! E allora<05>che ci fai con la<05>Tessera Soci?!
+008A	<26>8<05>Bugiardo!
+008C	<2A><2E>137<05><23>90<05>Allora, stai attento.
+008E	Wow, hai la Tessera<05>Soci! Che forte!
+0090	Firis era la tua<05>amata... e nessuno<05>può salvarla tranne<05>te.
+0092	Capitanooo!<05><42>1 3<05>
+0094	Ci porti con sé,<05>la prego.
+0096	Capitano! Noi quattro<05>la aiuteremo a<05>salvare la<05>Sacerdotessa Firis.
+0098	Da quando siamo<05>entrati nella Guardia<05>di Astholm, signore,<05>le nostre vite sono<05>sue.
+009A	Partire da solo...<05>non è un po' freddo<05>da parte sua,<05>signore?<05><5E> Possiamo<05>accompagnarla,<05>vero?<05><2B>1<05>
+009E	Noi quattro della<05>Guardia di Astholm,<05>Marsh, Gill, Elk e<05>Lenny,<05><5E> da ora giuriamo di<05>partecipare al<05>salvataggio di Firis!<05><5E> Saluto! Al Capitano<05>$1!<05><40>02<05><46>3 13<05><46>4 14<05><46>5 15<05><46>6 16<05>
+00A0	Ma signore! Dobbiamo<05>proprio venire con<05>lei!<05><2D>2<05>
+00A2	<26>06<05>L'Anziano ci ha<05>ordinato di non<05>aprire questo<05>cancello.<05><5E> Nemmeno per lei,<05>signore.
+00A4	<26>07<05>L'Anziano ha dato il<05>permesso. Prego,<05>passi pure.<05><49>173<05><40>07<05><41>3 8 1<05><41>4 7 1<05>
+00A6	$1, signore, stia<05>attento...
+00A8	Hai incontrato<05>l'Anziano?<05><25>1
+00AA	Salva Firis, ti<05>prego...
+00AC	Era molto<05>preoccupato.
+00AE	Se sapessi usare la<05>magia, verrei con<05>te, signor<05>$1...
+00B0	Una chiesa che ha<05>perso il suo padrone<05>è un luogo davvero<05>triste...
+00B2	Ah, $1! Cosa devo<05>pensare?<05><5E> Proprio il giorno<05>della Festa dello<05>Zaffiro,<05><5E> mia figlia... la mia<05>Firis, rapita...<05><5E> Non sono più una<05>Sacerdotessa, solo<05>una madre, sola...<05><5E> Ti prego, porta con<05>te la Tiara di<05>Zaffiro.<05><5E> Lo Zaffiro ti<05>guiderà da Firis...<05><5E> Ti supplico! $1!!<05>Salva Firis!!
+00B4	<26>6<05>La Festa era così<05>bella... ma se Firis<05>non torna,<05><5E> potrebbero annullare<05>la Festa del<05>prossimo anno!<05>Che schifo, no?
+00B6	$1, dicono che hai<05>dalla tua parte un<05>mago potentissimo!<05>Fantastico!<05><5E> Ora potrai riportare<05>Firis prima della<05>Festa del prossimo<05>anno!
+00B8	Su questo palco, a<05>occhi chiusi,<05><5E> vedo la figura<05>della Sacerdotessa<05>fluttuare davanti a<05>me...<05><29>sob<29>
+00BA	Se potessi, farei io<05>la Sacerdotessa, ma<05>ci vuole la giusta<05>discendenza...
+00BC	Non mi preoccupo, se<05>ci vai tu, $1.<05><5E> Riporterai la<05>Sacerdotessa di<05>sicuro!
+00BE	Mi<28><28>Mi perdoni,<05>signore! Entrare in<05>casa sua così...<05><5E> Ero solo... solo<05>così... così in<05>pensiero per lei,<05>signor $1,<05><5E> che volevo badare<05>alla sua casa!!
+00C0	<26>100<05>I maghi sono forti,<05>con la magia e<05>tutto il resto.<05><5E> Mi allenerò per<05>diventarlo anch'io!
+00C2	<23>!<4C>2<05>Allora? Allora?<05>Non è fantastico?
+00C4	Ho imparato una<05>magia! Vuoi vedere?<05><25>1
+00C6	<2E><4C>2<05>Ecco qua!<05><2A>110<05>
+00C8	Uffa! E io che mi<05>ero impegnato tanto!
+00CA	<26>6<05>Ti capisco, signor<05>$1, ma è davvero<05>troppo pericoloso!
+00CC	Signor $1... prego<05>per la tua fortuna<05>in battaglia.
+00CE	"Questa piazza è di<05>    tutti.<05> Giocate con<05>      prudenza.<05>        Astholm"
+00D0	Benvenuto nel<05>villaggio di Sholoss!
+00D2	Hanno tutti troppa<05>paura di avvicinarsi<05>al cancello.<05><5E> Hanno avvistato<05>mostri pericolosi<05>sulle montagne più<05>avanti.
+00D4	Accidenti! Voglio<05>andare all'osteria, ma<05>è ancora presto per<05>lo spettacolo,<05><5E> e se torno a casa<05>mia moglie mi fa una<05>ramanzina...<05><5E> Oh, povero me!
+00D6	Ehi, perché quel<05>muso lungo? Ti ha<05>mollato la ragazza?
+00D8	Wow, vieni da<05>Astholm? Non ci sono<05>mai stato!<05><5E> Ah già, non c'è a<05>breve la Festa dello<05>Zaffiro?
+00DA	Ehi, hai sentito di<05>Rolan di Segartea?<05><25>1
+00DC	Già, lo sapevo!<05>È famoso perché è<05>forte e bello.
+00DE	Davvero? Mah...<05>Pensavo lo<05>conoscessero tutti.
+00E0	Ehi, ero a caccia<05>sui monti a est, e sai<05>cosa ho visto?<05><5E> Un mostro mai visto<05>prima che si portava<05>dietro una ragazza<05>in abito da<05><5E> Sacerdotessa!
+00E2	C'è un mostriciattolo<05>che gironzola per il<05>paese di Segartea.<05><5E> Dicono che gli<05>piacciano le donne.<05>Che sia lui ad aver<05>preso la Sacerdotessa<05>di Astholm?
+00E4	<23>1<05>Ehi! Tu sei quello<05>che era con la<05>Sacerdotessa!<05><5E> Sei venuto a<05>riprendertela, eh?
+00E6	Stavolta non andrà<05>come l'altra volta!<05>Tu! Pensa a loro!
+00E8	Ah! ... Eh? ...<05>Non doveva...<05><5E> Andare così, eppure<05>eccoci qua, signore!
+00EA	Oh ti prego, ti prego,<05>scusa! Perdonami, ti<05>prego! Ti prego, ti<05>scongiuro!<05><2B>1<05>
+00EE	Non so niente!<05><5E> Mi hanno solo<05>ordinato di rapire la<05>Sacerdotessa! Io ero<05>pure contrario.<05><2B>2<05>
+00F0	Oh ti prego, padron<05>$1, non dire<05>più una cosa simile...<05><2D>2<05>
+00F2	Oh, padron $1, ti<05>chiedo perdono,<05>ti preeego...
+00F4	Oh oh, è da un bel po'<05>che non vedo un<05>soldato!<05><5E> Vieni dal prossimo<05>paese, Segartea?<05>Lì hanno una guardia<05>molto forte.
+00F6	Mio marito è di nuovo<05>a divertirsi da<05>qualche parte...<05><5E> Spero non stia<05>corteggiando le<05>ballerine del locale!
+00F8	Girano storie strane<05>di mostri che<05>arrivano fin nel<05><5E> centro del paese.
+00FA	Non calpestarmi i<05>campi!!
+00FC	Cosa? Firis è stata<05>rapita? St-stai<05>scherzando, vero?<05><5E> È solo grazie alla<05>benedizione dello<05>Zaffiro che viviamo<05>così sereni!
+00FE	<23>!27<05><23>!14<05>Ooh! Un umano che<05>parla!<05><5E> A dire il vero, un<05>mago malvagio mi ha<05>trasformato...<05><5E> Cosa? Perché mi<05>guardi così?<05><2B>2<05>
+0100	<49>192<05>Muuuuuuu.
+0102	<5E> Va bene, va bene,<05>ho capito! Hmpf.<05><5E> Allora non ti dirò<05>del pozzo di<05>Susandna.
+0104	<23>14<05><49>153<05>Coc coc coccodè!
+0106	<23>23<05>Ho sentito che un<05>mago malvagio vive<05>nel pozzo più a ovest<05>di Segartea.
+0108	Complimenti,<05>signor $1.
+010A	<23>14<05><49>153<05>Chicchirichì!
+010C	<23>23<05>Un mago malvagio mi<05>ha tolto la parola e<05>mi ha reso così...<05><2E>24<05>
+010E	Ohh... Oh! Oh, cielo!<05>Che meraviglia!<05><2A>72<05>
+0110	Ti meriti tutta la<05>tua fama, signor<05>$1,<05><5E> per aver salvato un<05>vecchio rimbambito<05>come me! Che<05>magnifica generosità.
+0112	"Arrivato il Novello!<05> Vietato l'ingresso<05>    ai mostri<05>        Bar Sholoss"
+0114	"Momenti incantevoli<05>  Spettacoli chic<05>     Pub Sapphire"
+0116	<26>!8<05>Su, su, ragazze,<05>torniamo alla lezione!<05>Stasera abbiamo un<05>palco da conquistare!
+0118	Oh, anche tu sei qui<05>per il provino, caro?<05><25>1
+011A	Va bene. Per oggi<05>guarda da lì e non<05>intralciare la<05>lezione.<05><2A>8<05><40>8<05>
+011C	Allora, per favore,<05>vattene! Stai<05>intralciando la<05>lezione!
+011E	<26>!8<05>Seguiremo il nostro<05>maestro Pierre<05>ovunque.
+0120	Le lezioni di Pierre<05>sono severissime!
+0122	<26>!8<05>Non intralciare<05>nemmeno tu la nostra<05>lezione!
+0124	Ci esercitiamo per lo<05>spettacolo di stasera.
+0126	<26>!8<05>Ih ih! Forse ce<05>l'avevamo nel sangue.
+0128	Il nostro maestro<05>Pierre ha un'aria da<05>artista...<05>Oh, è un sogno!
+012A	Alt, alt,<05><5E> Aaalt! Signorine!<05>Basta questo per<05>farvi girare la testa?<05><5E> Cosa mi tocca<05>sopportare...<05> *sospiro*<05><5E> Su, su, guardate<05>qui, prego.<05><5E> <42>2 3<05><42>3 3<05><42>4 3<05>Signorine!<05><5E> Non sento la<05>*passione* nella<05>vostra danza!<05>Passione, vi dico!
+012C	Gweeeheheh...<05>WOW, che sbronza...
+012E	Ooh! Un ballo? Ih ih!<05>Va bbene, se è un<05>ballo ci penso io!
+0130	Aaah! Aaah! Aiuto!
+0132	Tu! Sei quello che<05>era con la<05>Sacerdotessa dello<05>Zaffiro! Sei venuto a<05>riprendertela, eh?
+0134	Mie care, era quella!<05><5E> QUELLA--<05><5E> --Era PASSIONE!
+0136	Grrrr... Aspetta la<05>prossima volta!
+0138	Sì, sì, bene ora!<05>Ripartiamo<05>dall'ultimo pezzo!
+013A	Musica!
+013C	Ehi! Spostati,<05>muraccio!
+013E	Urgh... sembra che...<05>non si mova...
+0140	Ehi, ehi, hai sentito?<05>Il paese di Segartea<05>ha la Sacerdotessa<05>dello<05><5E> Smeraldo! Si chiama<05>Ellen, e ha pure una<05>sorella di nome<05>Karen!<05><5E> Se non avessimo<05>Firis ad Astholm che<05>ci benedice con lo<05>Zaffiro,<05><5E> ci sarebbe da<05>essere invidiosi!
+0142	<23>!<4C>7<05><49>255<05><49>185<05>Sciò, sciò!
+0144	<26>13<05>Segartea è nel mezzo<05>di una terribile<05>crisi.<05><5E> Non posso far<05>passare tipi<05>sospetti.<05><5E> ................<05>................<05>................<05>................<05><5E> Per fortuna non<05>sembri sospetto.<05>Passa pure.
+0146	Ora che Karen è stata<05>salvata, possiamo<05>tirare un sospiro di<05>sollievo.<05><5E> Pensare che avevo<05>diffidato di chi ha<05>salvato la nostra<05>Karen...<05><5E> Signor $1, posso<05>solo chiederti di<05>perdonare la mia<05>indiscrezione.
+0148	<23>!<4C>7<05><49>255<05><49>185<05>Sciò, sciò!
+014A	<26>10<05>Ora sono occupato.<05>Non parlarmi.
+014C	<26>13<05>Ora sono un po' meno<05>occupato. Comunque,<05>non parlarmi.
+014E	Sono troppo commosso<05>per parlare.<05>Non parlarmi.
+0150	<23>!<4C>7<05><49>255<05><49>185<05>Iiiih! Cos'è quello?
+0152	<26>13<05>La Sacerdotessa dello<05>Smeraldo, Ellen, e<05>sua sorella minore,<05>Karen, sono state<05>rapite.
+0154	Dicono che Karen è<05>stata salvata!<05><5E> <26>14<05>...Ehi, dietro di te,<05>non sarà mica...?
+0156	Vorrei tanto<05>ringraziare chi ha<05>salvato Karen.
+0158	<23>!<4C>7<05><49>255<05><49>185<05>Un pollo... che parla<05>con me......?<05><5E> Mmh?
+015A	<26>13<05>Lo Scettro di Smeraldo<05>dona il potere della<05>magia a chi lo porta.<05><5E> Spero solo che quei<05>mostri non lo usino<05>per scopi malvagi...
+015C	Ti prego, $1,<05>proteggi Karen per<05>noi.<05><5E> La sua magia ti<05>sarà di certo utile.
+015E	<23>!<4C>7<05><49>255<05><49>185<05>Rolan è un brav'uomo,<05>davvero.<05><5E> Cosa? Solo un pollo?
+0160	<26>!13<05>Quando lo Scettro di<05>Smeraldo è vicino a<05>Ellen o a sua sorella<05>Karen,<05><5E> rafforza il potere<05>magico di chi lo<05>impugna.<05><5E> Rolan usa la magia<05>del Ghiaccio, ma da<05>quando lo Scettro<05>è stato rubato,<05><5E> il suo potere è<05>svanito del tutto.<05><5E> Temo che il viaggio<05>che lo aspetta sarà<05>durissimo per lui.
+0162	Rolan, capitano della<05>guardia, ed Ellen si<05>amano...<05><5E> Rolan sarà a pezzi in<05>questo momento.<05><5E> Non solo deve portare<05>la colpa della<05>perdita del tesoro<05><5E> più sacro del paese,<05>lo Scettro di<05>Smeraldo,<05><5E> ma anche il dolore<05>per la fidanzata<05>rapita.<05><5E> Ti prego, signor<05>$1, potresti<05>aiutare Rolan a<05>salvarla?<05><25>1
+0164	Ti sono davvero<05>grato...<05><5E> Avevo sentito dire<05>quanto fosse capace<05>il capitano della<05>Guardia di Astholm,<05>ma...<05><5E> Sei all'altezza della<05>tua fama, e oltre.
+0166	Rolan è un brav'uomo,<05>davvero.<05><5E> Può sembrare freddo,<05>ma in realtà si<05>preoccupa molto per<05>i suoi compagni...
+0168	<23>!<4C>7<05><49>255<05><49>185<05>..................<05>..................<05>..................<05><5E> Mi è proibito<05>parlare con i polli.
+016A	<26>!20<05>Il signor $1,<05>capitano della guardia<05>di Astholm, e il<05>nostro Rolan di<05>Segartea...<05><5E> Con questi due<05>personaggi<05>impareggiabili uniti,<05><5E> sono certo che le<05>Sacerdotesse saranno<05>salvate.<05><5E> Signor $1, prego<05>per la tua fortuna<05>in battaglia.
+016C	<26>!16<05>Ci è appena giunta<05>notizia che Rolan è a<05>sud di qui, nel<05>villaggio di Albany.<05><5E> Ti prego, stai<05>attento.
+016E	<23>!1<05>..................<05>..................<05>..................<05><5E> Mi è proibito<05>parlare.
+0170	<26>10<05>Non puoi passare da<05>questo cancello finché<05>Rolan non è partito.<05><5E> Vuole seguire le<05>tracce lasciate dai<05>mostri,<05><5E> e se la gente le<05>calpestasse, le tracce<05>andrebbero perse.
+0172	Rolan è partito.<05>Puoi passare.<05><2E>1<05><2A>11<05>
+0174	<23>!<4C>7<05><49>255<05><49>185<05>Un pollo... Credo<05>sia inutile chiedere<05>a un pollo di salvare<05>Ellen...
+0176	<26>10<05>Viaggiatori... Il<05>paese sta vivendo una<05>terribile crisi.<05><5E> La Sacerdotessa,<05>Ellen, e sua sorella<05>Karen sono state<05>rapite dai mostri.<05><5E> È appena partita una<05>squadra di soccorso<05>per salvarle.
+0178	<26>13<05>Se qualcuno può<05>salvare Ellen, quello<05>è Rolan.
+017A	<26>14<05>Karen! Sei salva!<05>Signor $1, non ho<05>parole per<05>ringraziarti...<05><5E> Ora se solo Rolan<05>riuscisse a salvare<05>Ellen...
+017C	Ora se solo Rolan<05>riuscisse a salvare<05>Ellen...
+017E	<23>!<4C>7<05><49>255<05><49>185<05>Sciò, sciò!
+0180	<26>!13<05>È davvero un miracolo<05>che Karen sia tornata<05>sana e salva.<05><5E> Ma ora mi preoccupa<05>ancora di più cosa<05>sia successo a Ellen.
+0182	È stato proprio qui<05>che ce le hanno<05>portate via...<05><5E> Non ho potuto fare<05>niente per salvarle.<05><5E> Non credo che i<05>demoni che le hanno<05>prese fossero umani!
+0184	<23>!<4C>7<05><49>255<05><49>185<05>Vattene!
+0186	<26>13<05>C'è un gran trambusto<05>in centro, come se<05>ci fosse una festa.<05><5E> Che succede?
+0188	<26>14<05>Oh, wow, Karen!<05>Allora È una festa!
+018A	Il paese è ANCORA in<05>gran fermento... ma<05>quanto dura questa<05>festa?
+018C	<23>!<4C>7<05><49>255<05><49>185<05>Un pollo?<05><5E> Coraggio,<05>pollastrello...
+018E	<26>16<05>Senza Ellen, a cosa<05>serve questa chiesa?<05><5E> E come se non<05>bastasse, ci hanno<05>preso lo Scettro di<05>Smeraldo...<05><5E> Potrebbe essere la<05>fine del nostro paese.
+0190	Speravo che Karen ci<05>tirasse su il morale<05>finché Ellen non<05>fosse tornata...
+0192	<23>!<4C>7<05><49>255<05><49>185<05>Sciò, sciò!
+0194	<26>10<05>Rolan, capitano della<05>guardia, sta tenendo<05>una riunione per il<05>salvataggio di<05><5E> Ellen e Karen.
+0196	<26>13<05>Rolan è l'uomo più<05>coraggioso e capace<05>del paese.<05><5E> Sono sicuro che<05>riuscirà a salvare<05>le sorelle...
+0198	<26>!16<05>Signor $1, prego<05>perché il tuo viaggio<05>sia sicuro.
+019A	Non pensi che quelli<05>che hanno rapito la<05>vostra Sacerdotessa,<05>Firis,<05><5E> possano essere gli<05>stessi che hanno<05>rapito Ellen?<05><5E> Allora? Ti unirai<05>alle forze di Rolan?<05><25>1
+019C	Davvero!? Allora, per<05>favore, dillo a<05>Karen. Vuole partire<05>all'inseguimento di<05>Rolan.<05><5E> Prego che voi due<05>raggiungiate Rolan<05>sani e salvi...
+019E	Capisco... Cerco di<05>essere ragionevole,<05>ma pensavo che così<05>fosse più facile<05><5E> raccogliere notizie<05>sui tuoi nemici.<05>Sei sicuro?
+01A0	Oh, Karen! Meno male<05>che sei tornata sana<05>e salva!
+01A2	Karen...<05><5E> Rolan è già partito<05>per salvare Ellen.
+01A4	Cosa? Stai scherzando!<05>Ma come--come ha<05>potuto essere così<05>avventato?<05><5E> Senza lo Scettro di<05>Smeraldo Rolan non<05>può usare la magia...<05><5E> Viaggiare senza<05>l'aiuto di un mago...<05><5E> Se non lo raggiungo<05>presto...<05><5E> Ho deciso. Vado a<05>prepararmi.<05><3B>7 0<05><40>14<05>
+01A6	<23>!<4C>7<05><49>255<05><49>185<05>Questa è nuova.<05>Un pollo che cerca di<05>parlarmi?
+01A8	<26>13<05>Vivo in questo paese<05>da tantissimo tempo,<05><5E> e non ho mai visto<05>una cosa così<05>terribile.<05><5E> E pensare che ho<05>sempre pregato il<05>Sacro Smeraldo per<05>la pace...
+01AA	Karen usa la magia<05>per curare le ferite<05>della battaglia.<05><5E> Senza Ellen, non c'è<05>proprio nessun altro<05>che possa<05>accompagnare Rolan.
+01AC	<23>!<4C>7<05><49>255<05><49>185<05>Consolami,<05>pollastrello...
+01AE	Maledizione! *sniff*<05>Amavo così tanto<05>Ellen, e ora...<05><5E> Strappata via dai<05>mostri! Uaaahhhhh!
+01B0	<23>!<4C>7<05><49>255<05><49>185<05>Non ho niente da<05>spartire con i polli!
+01B2	<26>!20<05>Signor $1, abbi<05>gran cura di Karen.
+01B4	<26>!13<05>Karen vuole partire<05>per salvare Ellen<05>insieme a Rolan.<05><5E> Ti prego, prestale<05>la tua forza.
+01B6	<26>10<05>È terribile, davvero<05>disastroso...<05><5E> Lo Scettro di<05>Smeraldo proteggeva<05>il villaggio col suo<05>potere sacro.<05><5E> Ora che è stato<05>rubato, la gente di<05>Segartea è indifesa<05>come un bambino...<05><5E> Per non parlare del<05>fatto che la nostra<05>cara, dolce Ellen ci<05>è stata portata via...<05><5E> Non posso far altro<05>che pregare.
+01B8	Capisco come si sente<05>Rolan, dato che Ellen<05>è la sua fidanzata...<05><5E> ...ma senza un mago<05>dalla loro parte, c'è<05>davvero speranza di<05>riuscire?
+01BA	Siamo nel mezzo di una<05>riunione importante.<05>Non parlarmi!
+01BC	...Come abbiamo potuto<05>lasciar rapire la<05>nostra Sacerdotessa?<05><5E> Vergogna su tutti noi<05>della Guardia...
+01BE	...Chissà come stanno<05>Ellen e Karen...
+01C0	...Che ne sarà di<05>Segartea senza lo<05>Scettro di Smeraldo?
+01C2	...Dubito che il<05>capitano Rolan abbia<05>dormito stanotte...
+01C4	Ellen... Karen...<05>Vi riporteremo a casa,<05>di sicuro!
+01C6	Bene allora!<05>In marcia!
+01C8	<42>6 1<05><42>7 1<05><42>5 1<05><42>4 1<05>Sissignore!
+01CA	<23><4C>1<05>Fatti da parte,<05>teppista!<05><2E><4C>1<05>
+01CC	Cosa non hai capito<05>di "fatti da parte"?!<05>MUOVITI!
+01CE	I miei preparativi<05>sono finiti.<05><5E> $1, ti prometto<05>di non intralciarti.<05><5E> Possiamo viaggiare<05>insieme finché non<05>trovo Rolan?<05><2B>1<05>
+01D2	Grazie di cuore.<05>Su, andiamo.<05><44>2<05><3B>7 8<05><40>16<05>
+01D4	Ti scongiuro! Le forze<05>di Rolan sono là fuori<05>senza un mago che le<05>aiuti.<05><5E> Ti imploro, portami<05>da lui!<05><2D>2<05>
+01D6	<23>!<4C>7<05><49>255<05><49>185<05>Ehi, pollastrello.<05>Vuoi sentire anche tu<05>le mie indagini?
+01D8	Ci sono!! Quando hanno<05>preso la Sacerdotessa,<05>NON ERA PER I SOLDI!!<05><5E> Allora? Eh? Che ne<05>dici del mio fiuto da<05>detective?
+01DA	<23>!<4C>7<05><49>255<05><49>185<05>Oh oh! Un pollo mi<05>sta abbordando!
+01DC	<26>13<05>Il rapimento di una<05>Sacerdotessa non ha<05>precedenti nella<05>storia di Segartea.<05><5E> Che sia il presagio<05>di qualcosa di<05>ancora peggiore?
+01DE	La gente di Segartea è<05>così sollevata che<05>Karen sia tornata.<05><5E> Signor $1, non so<05>proprio come<05>ringraziarti.
