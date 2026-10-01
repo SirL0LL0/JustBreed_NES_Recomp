@@ -37,7 +37,7 @@ SINGLE["."] = 0x1E
 SINGLE["-"] = 0x28            # trattino ("top-class")
 SINGLE["*"] = 0x29            # asterisco ("*sob*")
 # lettere accentate (italiano): codici 06-0C, glifi kana inutilizzati dalla versione inglese (disegnati da build_en_it)
-ACCENTED = "àèéìòùÈ"
+ACCENTED = "àèéìòùÈÀ"
 for _i, _c in enumerate(ACCENTED):
     SINGLE[_c] = 0x06 + _i
 SINGLE_INV = {v: k for k, v in SINGLE.items()}

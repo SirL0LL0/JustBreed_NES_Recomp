@@ -228,6 +228,21 @@ def draw_accents(data, prg_size):
     for bank, part in ((60, new[:8]), (61, new[8:])):
         t = bytes([r[0] for r in part] + [r[1] for r in part])
         set_tile(data, prg_size, bank, C.SINGLE["È"], t)
+    # À: A maiuscola accorciata (8 righe, 4..11) + accento grave alle righe 1-2
+    rows = []
+    for bank in (60, 61):
+        t = chr_tile(data, prg_size, bank, C.SINGLE["A"])
+        rows += [(t[y], t[y + 8]) for y in range(8)]
+    body = rows[1:12]
+    new = [(0, 0)] * 16
+    p0 = 1 if any(r[0] for r in body) else 0
+    for y, bits in ((1, 0b00010000), (2, 0b00001000)):
+        new[y] = (bits, 0) if p0 else (0, bits)
+    for y, r in zip(range(4, 12), [body[i] for i in (0, 2, 4, 6, 7, 8, 9, 10)]):
+        new[y] = r
+    for bank, part in ((60, new[:8]), (61, new[8:])):
+        t = bytes([r[0] for r in part] + [r[1] for r in part])
+        set_tile(data, prg_size, bank, C.SINGLE["À"], t)
 
 
 def draw_dte(data, prg_size, pairs):
