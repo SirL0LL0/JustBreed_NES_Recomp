@@ -24,13 +24,14 @@ if(NOT RECOMP_UI_ROOT)
 endif()
 message(STATUS "recomp-ui: ${RECOMP_UI_ROOT}")
 
-# Backend a cicli di nesrecomp: la ROM (la build italiana, generata da tools/build_it.py) viene ricompilata in C
-# ciclo per ciclo; il codice non ancora visto gira sull'interprete. cycle_seeds.txt elenca gli indirizzi da compilare.
+# Backend a cicli di nesrecomp: la ROM (la build italiana, generata da tools/build_en_it.py sopra la traduzione
+# inglese di Stealth) viene ricompilata in C ciclo per ciclo; il codice non ancora visto gira sull'interprete.
+# cycle_seeds.txt elenca gli indirizzi da compilare. Un'altra ROM (inglese, giapponese) gira solo sull'interprete.
 include(${NESRECOMP_ROOT}/runner/cyc/project.cmake)
 include(${NESRECOMP_ROOT}/runner/cyc/app/app.cmake)
 
-set(JB_ROM "${CMAKE_SOURCE_DIR}/build_rom/jb_it_preview.nes" CACHE FILEPATH
-    "ROM di Just Breed gia' tradotta (tools/build_it.py baserom_jp.nes text/it_wrapped.tsv <qui>)")
+set(JB_ROM "${CMAKE_SOURCE_DIR}/build_rom/jb_it.nes" CACHE FILEPATH
+    "ROM di Just Breed tradotta (tools/build_en_it.py baserom.nes text/it_en.tsv <qui>)" FORCE)
 nesrecomp_add_cycle_game(JustBreedRecomp
     ROM ${JB_ROM}
     SEED_FILE ${CMAKE_SOURCE_DIR}/cycle_seeds.txt

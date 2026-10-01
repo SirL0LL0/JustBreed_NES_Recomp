@@ -448,6 +448,8 @@ def main():
 
     # --- grafica
     draw_accents(data, prg_size)
+    import menu_words
+    print("parole dei menu:", " ".join(menu_words.draw_menu_words(data, prg_size)))
 
     open(out, "wb").write(data)
     print("scritta", out)
