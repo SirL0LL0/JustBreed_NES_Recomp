@@ -33,3 +33,5 @@ build_rom/
 assets/*.hex.bak
 scratch/
 disasm/
+text/en.tsv
+text/en_dict.tsv

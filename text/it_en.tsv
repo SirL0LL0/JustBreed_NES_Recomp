@@ -1,0 +1,6 @@
+# Traduzione italiana basata sul copione inglese (text/en.tsv). id<TAB>testo; i messaggi assenti restano in inglese.
+# Formato: <05> a capo, <5E> attesa tasto, <xx> comandi (copiarli com'erano), $N variabili. Max 22 colonne per riga.
+0000	Nessuno risponde<1E><1E><1E>
+0002	<1E><1E><1E><1E><1E><1E>Non succede niente<1E>
+0004	Non c'è niente di<05>speciale<1E>
+
