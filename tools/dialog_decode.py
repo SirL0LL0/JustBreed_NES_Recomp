@@ -2,7 +2,8 @@
 """Decodifica i messaggi (dialoghi) compressi di Just Breed eseguendo la routine originale del gioco
 ($D094 nel banco 62) con l'emulatore 6502 py65 (pip install py65).
 
-  python tools/dialog_decode.py baserom_jp.nes [max_indice] [out.tsv]
+Usato da build_en_it.py per verificare che la routine del gioco (banco 62) carichi ogni messaggio
+come previsto. Nella base inglese la routine copia il testo non compresso (vedi charmap_en.py).
 
 Il messaggio N (indice = offset in byte nella tabella dei puntatori a $8200 del banco 46) viene decompresso
 in $6400 dal codice del gioco stesso: albero di Huffman a $8000 (banco 46), flusso di bit MSB-first,
@@ -11,7 +12,6 @@ blob nei banchi 16+.  Simboli: 01 kk = kanji, 02/03/04/60-63 pp = comando con pa
 import sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from py65.devices.mpu6502 import MPU
-from charmap_jp import decode_line
 
 UNIT = 8192
 
@@ -71,39 +71,3 @@ class Game:
                 break
             out.append(self.mem[i])
         return bytes(out)
-
-
-def render(raw):
-    """Testo leggibile: kanji/kana decodificati, codici di controllo con parametro come {02:xx}."""
-    out, i = [], 0
-    while i < len(raw):
-        c = raw[i]
-        if c in (0x02, 0x03, 0x04, 0x60, 0x61, 0x62, 0x63) and i + 1 < len(raw):
-            out.append("{%02X:%02X}" % (c, raw[i + 1])); i += 2; continue
-        if c == 0x01 and i + 1 < len(raw):
-            out.append(decode_line(raw[i:i + 2])); i += 2; continue
-        out.append(decode_line(bytes([c]))); i += 1
-    return "".join(out)
-
-
-if __name__ == "__main__":
-    g = Game(sys.argv[1])
-    top = int(sys.argv[2]) if len(sys.argv) > 2 else 64
-    out = open(sys.argv[3], "w", encoding="utf-8") if len(sys.argv) > 3 else None
-    ok = 0
-    for idx in range(0, top, 2):
-        try:
-            raw = g.message(idx)
-        except Exception as e:
-            raw = None
-            txt = "<errore: %s>" % e
-        else:
-            txt = render(raw)
-        line = "%04X\t%s\t%s" % (idx, raw.hex() if raw else "", txt)
-        if out:
-            out.write(line + "\n")
-        elif idx < 80:
-            print(line)
-        if raw:
-            ok += 1
-    print("messaggi decodificati:", ok)
