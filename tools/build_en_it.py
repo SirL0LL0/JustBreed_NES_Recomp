@@ -57,6 +57,8 @@ def segments(plain):
             push(False, plain[i:i + 2]); i += 2; continue
         if c in C.CMD_BYTES:                       # comando + eventuali argomenti (cifre, '!', '.')
             j = i + 1
+            if c == 0x5E and j < len(plain):       # <5E> (attesa tasto, u58:$9E77) consuma il byte seguente
+                j += 1                             # (lo spazio): mai dentro un digramma o una parola del dizionario
             while j < len(plain) and plain[j] not in comp and plain[j] not in C.CMD_BYTES and plain[j] not in C.CMD2 \
                     and plain[j] != 0x05:
                 j += 1
@@ -479,6 +481,19 @@ def main():
             if bad < 5:
                 print("DIVERSO %04X" % k)
     print("verifica rilettura: %d messaggi, diversi: %d" % (len(parts), bad))
+    # dopo <5E> il gioco salta un byte: deve essere un carattere semplice (mai 01 xx o un digramma)
+    b5e = 0
+    for k in sorted(parts):
+        raw = C.read_message(prg2, k)
+        i = 0
+        while i < len(raw):
+            if raw[i] in C.CMD2 or raw[i] == 0x01:
+                i += 2; continue
+            if raw[i] == 0x5E and i + 1 < len(raw) and (raw[i + 1] == 0x01 or raw[i + 1] >= 0xB0):
+                b5e += 1
+                print("ERRORE %04X: dopo <5E> c'e' %02X" % (k, raw[i + 1]))
+            i += 1
+    bad += b5e
     try:
         from dialog_decode import Game
     except ImportError:
