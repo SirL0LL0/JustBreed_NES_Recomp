@@ -16,7 +16,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import charmap_en as C
 
 UNIT = C.UNIT
-WIDTH = 22                     # colonne utili del riquadro dei dialoghi (l'inglese arriva a 22-23)
+WIDTH = 26                     # colonne utili del riquadro (misurate: 27; l'originale giapponese usa 26, l'inglese 22)
 VAR_W = {"0": 7, "1": 6, "2": 7}   # larghezza stimata delle variabili $N (nomi, oggetti, numeri)
 
 
