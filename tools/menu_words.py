@@ -126,7 +126,7 @@ def render_word(data, prg_size, word, ntiles, kinds=("menu", "stretto")):
         img = _compose(gl)
         w = len(img[0])
         if w <= ntiles * 8:
-            off = (ntiles * 8 - w) // 2
+            off = 1 if w < ntiles * 8 else 0        # allineate a sinistra: in colonna i comandi partono tutti uguali
             full = [[0] * (ntiles * 8) for _ in range(16)]
             for y in range(16):
                 full[y][off:off + w] = img[y]
