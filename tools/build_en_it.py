@@ -369,6 +369,41 @@ def patch_intro(data, path):
     print("introduzione: %d righe" % len(lines))
 
 
+# Nomi nei messaggi di battaglia: u57:$975B mette in $070A il nome dell'unita' X (u57:$96C9). Se lo slot non ha
+# un personaggio ($6980,X = 0: un soldato della truppa, senza nome) scrive 7 spazi e il messaggio esce come
+# " apprende Eleums!!" (anche nel giapponese). Ora $975B chiama $9F00 (spazio libero dell'unita' 57), che dopo
+# $96C9 sostituisce gli spazi con UNNAMED_UNIT. I menu (u57:$96BC) restano come prima.
+UNNAMED_UNIT = "Truppa"
+
+
+def patch_unnamed_unit(data):
+    base = 16 + 57 * UNIT - 0x8000
+    assert data[base + 0x975F:base + 0x9762] == bytes([0x20, 0xC9, 0x96])
+    assert all(b == 0 for b in data[base + 0x9F00:base + 0x9F30])
+    name = C.encode_plain(UNNAMED_UNIT.ljust(7))
+    assert len(name) == 7
+    code = bytes([
+        0x8A,                   # 9F00 TXA
+        0x48,                   # 9F01 PHA
+        0x20, 0xC9, 0x96,       # 9F02 JSR $96C9
+        0x68,                   # 9F05 PLA
+        0xAA,                   # 9F06 TAX
+        0xF0, 0x12,             # 9F07 BEQ $9F1B   (X=0: nessuna unita', lascia com'e')
+        0xBD, 0x80, 0x69,       # 9F09 LDA $6980,X
+        0xD0, 0x0D,             # 9F0C BNE $9F1B   (personaggio con nome)
+        0xA2, 0x00,             # 9F0E LDX #0
+        0xBD, 0x20, 0x9F,       # 9F10 LDA $9F20,X
+        0x9D, 0x0A, 0x07,       # 9F13 STA $070A,X
+        0xE8,                   # 9F16 INX
+        0xE0, 0x07,             # 9F17 CPX #7
+        0xD0, 0xF5,             # 9F19 BNE $9F10
+        0x60,                   # 9F1B RTS
+    ])
+    data[base + 0x9F00:base + 0x9F00 + len(code)] = code
+    data[base + 0x9F20:base + 0x9F27] = name
+    data[base + 0x975F:base + 0x9762] = bytes([0x20, 0x00, 0x9F])
+
+
 # ------------------------------------------------------------------------------------------ controlli
 def check_width(idx, text):
     bad = []
@@ -459,6 +494,7 @@ def main():
     intro = os.path.join(os.path.dirname(os.path.abspath(it_tsv)), "intro_it_en.txt")
     if os.path.exists(intro):
         patch_intro(data, intro)
+    patch_unnamed_unit(data)
 
     # --- grafica
     draw_accents(data, prg_size)
