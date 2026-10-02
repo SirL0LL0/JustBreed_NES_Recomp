@@ -245,6 +245,16 @@ def draw_accents(data, prg_size):
         set_tile(data, prg_size, bank, C.SINGLE["À"], t)
 
 
+def unify_font(data, prg_size):
+    """La versione inglese ha una seconda serie di maiuscole in stile diverso (41-58, piu' Y Z V X a 02-05 ed E a 1F),
+    usata da finestre come quella dei soldi ("G") e delle statistiche: le rende uguali alle maiuscole normali (61-7A)."""
+    copies = [(0x41 + i, 0x61 + i) for i in range(24)] + [            # A-X (59/5A sono « »)(0x02, 0x79), (0x03, 0x7A), (0x04, 0x76), (0x05, 0x78),
+                                                          (0x1F, 0x65)]
+    for dst, src in copies:
+        for bank in (60, 61):
+            set_tile(data, prg_size, bank, dst, chr_tile(data, prg_size, bank, src))
+
+
 def draw_dte(data, prg_size, pairs):
     for k, (a, b) in enumerate(pairs):
         n = (0xB0 + k - 0xAF) * 2
@@ -318,8 +328,10 @@ def patch_ui(data, path):
             assert len(raw) <= width - 1, "riga %d: %r troppo lungo (max %d)" % (ln, p[2], width - 1)
             o = 16 + base + idx * width
             data[o:o + width] = raw + b" " * (width - 1 - len(raw)) + b"\x00"
-        elif p[0] == "fixed":
+        elif p[0] in ("fixed", "fixed_dte"):
             off, en, it = int(p[1], 16), C.encode_plain(p[2]), C.encode_plain(p[3])
+            if p[0] == "fixed_dte":       # solo testo stampato dalla routine dei dialoghi (che espande i digrammi)
+                it = apply_dte(it, [(C.SINGLE[q[0]], C.SINGLE[q[1]]) for q in C.EN_DTE])
             o = 16 + off
             assert bytes(data[o:o + len(en)]) == en, "riga %d: in ROM a %05X non c'e' %r" % (ln, off, p[2])
             assert len(it) <= len(en), "riga %d: %r piu' lungo dell'inglese (%d > %d)" % (ln, p[3], len(it), len(en))
@@ -448,6 +460,7 @@ def main():
 
     # --- grafica
     draw_accents(data, prg_size)
+    unify_font(data, prg_size)
     import menu_words
     print("parole dei menu:", " ".join(menu_words.draw_menu_words(data, prg_size)))
 

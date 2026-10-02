@@ -137,9 +137,9 @@ rank	1	Mago
 rank	2	Soldato
 rank	3	Arciere
 # messaggi di fine battaglia (unita' 59, testo dopo JSR $9E01)
-fixed	7658A	Received $0 Exp<05>	Ottenuti $0 ESP<05>
-fixed	765F9	Received $0 G.<05>	Ottenuti $0 G.<05>
-fixed	7665D	Level up!!  <05>	Liv. salito!<05>
+fixed_dte	7658A	Received $0 Exp<05>	$2 ottiene $0 ESP<05>
+fixed_dte	765F9	Received $0 G.<05>	$2 ottiene $0 G.<05>
+fixed_dte	7665D	Level up!!  <05>	$2 sale liv!<05>
 fixed	7688D	$0 learned $2!!!<05>	$0 apprende $2!!<05>
 # menu e schermate (unita' 58)
 fixed	7419A	Yes<05> No	Sì <05> No

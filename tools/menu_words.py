@@ -9,8 +9,8 @@ import charmap_en as C
 # (primo codice, numero di tile, parole candidate in ordine di preferenza)
 MENU_WORDS = [
     (0xA0, 4, ["Altro"]),          # Misc
-    (0xA4, 3, ["Sosta"]),          # Hold
-    (0xA7, 4, ["Lotta"]),          # Fight
+    (0xA4, 3, ["Sosta", "Fine"]),  # Hold (fine del turno dell'unita')
+    (0xA7, 4, ["Lotta", "Colpo"]), # Fight
     (0xAB, 4, ["Togli"]),          # Unarm
     (0xB0, 5, ["Parla"]),          # Speak
     (0xB5, 4, ["Magia"]),          # Magic
@@ -89,6 +89,20 @@ def _regular(data, prg_size, ch):
     return [r[cols[0]:cols[-1] + 1] for r in rows]
 
 
+def _menu(data, prg_size, ch):
+    """Font da menu: glifo normale con una colonna interna ridondante in meno (5 pixel invece di 6)."""
+    g = _regular(data, prg_size, ch)
+    w = len(g[0])
+    if w < 5:
+        return g
+    best, score = None, -1
+    for x in range(1, w - 1):                       # colonna piu' simile a una vicina (mai i bordi)
+        s = max(sum(r[x] == r[x - 1] for r in g), sum(r[x] == r[x + 1] for r in g))
+        if s > score:
+            best, score = x, s
+    return [r[:best] + r[best + 1:] for r in g]
+
+
 def _compose(glyphs):
     w = sum(len(g[0]) for g in glyphs) + len(glyphs) - 1
     img = [[0] * w for _ in range(16)]
@@ -102,11 +116,11 @@ def _compose(glyphs):
     return img
 
 
-def render_word(data, prg_size, word, ntiles, kinds=("normale", "stretto")):
+def render_word(data, prg_size, word, ntiles, kinds=("menu", "stretto")):
     """-> (immagine 16 x ntiles*8, font usato) o (None, None) se non entra."""
     for kind in kinds:
         try:
-            gl = [(_regular(data, prg_size, c) if kind == "normale" else _narrow(c)) for c in word]
+            gl = [(_menu(data, prg_size, c) if kind == "menu" else _narrow(c)) for c in word]
         except KeyError:
             continue
         img = _compose(gl)
@@ -125,7 +139,7 @@ def draw_menu_words(data, prg_size):
     for start, n, cands in MENU_WORDS:
         for word in cands:
             # gli stati (E6-F8) sempre col font stretto, come nell'inglese
-            kinds = ("stretto",) if start >= 0xE6 else ("normale", "stretto")
+            kinds = ("stretto",) if start >= 0xE6 else ("menu",)
             img, kind = render_word(data, prg_size, word, n, kinds)
             if img:
                 break
